@@ -1,0 +1,7 @@
+main.py usr/lib/ubuntu-glove
+core usr/lib/ubuntu-glove
+ui usr/lib/ubuntu-glove
+data usr/share/ubuntu-glove
+scripts/ubuntu-glove usr/bin
+systemd/ubuntu-glove.service usr/lib/systemd/user
+share/applications/ubuntu-glove.desktop usr/share/applications

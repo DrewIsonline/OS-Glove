@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ubuntu-glove"
+version = "0.2.0a0"
+description = "A local-first Ubuntu GNOME desktop assistant overlay"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "Drew Is OpenS"}]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: X11 Applications :: GTK",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+]
+dependencies = [
+  "PyGObject>=3.42",
+  "pyatspi>=2.46",
+]
+
+[project.scripts]
+ubuntu-glove = "main:main"
+ubuntu-glove-indicator = "ui.tray_indicator:main"
+
+[tool.setuptools]
+py-modules = ["main"]
+
+[tool.setuptools.packages.find]
+include = ["core*", "ui*", "data*"]
+
+[tool.setuptools.package-data]
+"data" = ["*.json"]

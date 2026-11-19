@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Ubuntu Glove
+Comment=Privacy-aware GNOME desktop assistant overlay
+Exec=/usr/bin/ubuntu-glove --activate
+TryExec=/usr/bin/ubuntu-glove
+Icon=dialog-information-symbolic
+Terminal=false
+Categories=Utility;System;
+Keywords=assistant;overlay;terminal;notes;accessibility;
+StartupNotify=false

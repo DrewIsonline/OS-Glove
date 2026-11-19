@@ -1,0 +1,132 @@
+[
+  {
+    "cmd": "sudo apt update && sudo apt upgrade -y",
+    "desc": "Fetch package lists and apply available software/security updates",
+    "category": "Package Management"
+  },
+  {
+    "cmd": "sudo ubuntu-drivers install",
+    "desc": "Automatically install recommended proprietary drivers",
+    "category": "Package Management"
+  },
+  {
+    "cmd": "ubuntu-drivers devices",
+    "desc": "List detected hardware needing drivers and available packages",
+    "category": "Package Management"
+  },
+  {
+    "cmd": "pro status",
+    "desc": "View current status of Ubuntu Pro services and security coverage",
+    "category": "Package Management"
+  },
+  {
+    "cmd": "nvidia-smi",
+    "desc": "Real-time GPU overview (VRAM, temperature, power, active processes)",
+    "category": "GPU & Telemetry"
+  },
+  {
+    "cmd": "nvidia-smi --query-gpu=temperature.gpu,fan.speed,power.draw --format=csv,noheader,nounits",
+    "desc": "Streamlined CSV output for hardware telemetry (temp, fan speed, power)",
+    "category": "GPU & Telemetry"
+  },
+  {
+    "cmd": "nvtop",
+    "desc": "Interactive htop-like viewer for GPUs",
+    "category": "GPU & Telemetry"
+  },
+  {
+    "cmd": "btop",
+    "desc": "Modern resource monitor for CPU, Memory, Disks, and Network",
+    "category": "System Monitoring"
+  },
+  {
+    "cmd": "sudo apt install btop nvtop -y",
+    "desc": "Install performance monitoring TUI tools (btop and nvtop)",
+    "category": "System Monitoring"
+  },
+  {
+    "cmd": "sudo apt install gnome-shell-extension-manager -y",
+    "desc": "Install GUI manager for GNOME Shell extensions",
+    "category": "System Monitoring"
+  },
+  {
+    "cmd": "df -h /",
+    "desc": "Display available and used disk space for root partition",
+    "category": "Storage & Partitioning"
+  },
+  {
+    "cmd": "lsblk -e7",
+    "desc": "List storage block devices excluding loopback devices",
+    "category": "Storage & Partitioning"
+  },
+  {
+    "cmd": "sudo blkid",
+    "desc": "Print block device attributes, UUIDs, and filesystem types",
+    "category": "Storage & Partitioning"
+  },
+  {
+    "cmd": "ip -br a",
+    "desc": "Show computer IP address and network interface status in brief format",
+    "category": "Networking"
+  },
+  {
+    "cmd": "ip a",
+    "desc": "View full network interface IP address assignments",
+    "category": "Networking"
+  },
+  {
+    "cmd": "sudo apt install openssh-server -y",
+    "desc": "Install OpenSSH server daemon for remote management",
+    "category": "Networking"
+  },
+  {
+    "cmd": "sudo systemctl status ssh",
+    "desc": "Check SSH service daemon status",
+    "category": "Networking"
+  },
+  {
+    "cmd": "sudo ufw allow ssh",
+    "desc": "Allow incoming SSH connections through Ubuntu firewall",
+    "category": "Networking"
+  },
+  {
+    "cmd": "ssh user@<IP_ADDRESS>",
+    "desc": "Establish a remote terminal SSH connection to another system",
+    "category": "Networking"
+  },
+  {
+    "cmd": "ssh-keygen -t ed25519 -C \"laptop-operator-sandbox\"",
+    "desc": "Generate hardened Ed25519 SSH keypair",
+    "category": "Security"
+  },
+  {
+    "cmd": "nano <filename>",
+    "desc": "Open simple command-line text editor for a file",
+    "category": "Nano & Shell Essentials"
+  },
+  {
+    "cmd": "grep -rn \"pattern\" /path/",
+    "desc": "Recursively search files for string pattern with line numbers",
+    "category": "Nano & Shell Essentials"
+  },
+  {
+    "cmd": "chmod +x <script.sh>",
+    "desc": "Make shell script or binary executable",
+    "category": "Nano & Shell Essentials"
+  },
+  {
+    "cmd": "journalctl -xeu <service>",
+    "desc": "View detailed systemd logs and catalog hints for a specific unit",
+    "category": "System Maintenance"
+  },
+  {
+    "cmd": "sudo reboot",
+    "desc": "Instantly restart the operating system",
+    "category": "System Maintenance"
+  },
+  {
+    "cmd": "sudo poweroff",
+    "desc": "Safely shutdown and power down the physical system",
+    "category": "System Maintenance"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "mode": "active",
+  "privacy": {
+    "screen_read_enabled": false
+  },
+  "llm": {
+    "provider": "openai_compatible_local",
+    "endpoint": "http://127.0.0.1:8080/v1",
+    "route_id": "replace-with-a-reviewed-route-in-models.lock.json"
+  }
+}

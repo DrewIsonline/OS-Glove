@@ -1,0 +1,3 @@
+PyGObject>=3.42
+pyatspi>=2.46
+# gtk4-layer-shell, libadwaita, and AyatanaAppIndicator3 are installed as Ubuntu packages.

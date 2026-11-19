@@ -1,0 +1,9 @@
+ubuntu-glove (0.2.0-1) unstable; urgency=medium
+
+  * Rebuild the supplied prototype as a local-first alpha pilot.
+  * Restrict optional model requests to reviewed loopback gateway routes.
+  * Block screen capture when accessibility safety context is unavailable.
+  * Use a random private temporary image and preserve user notes on upgrade.
+  * Add portable unit tests and Ubuntu GNOME acceptance tests.
+
+ -- Drew Is OpenS <REPLACE-BEFORE-DISTRIBUTION@example.invalid>  Tue, 21 Oct 2026 17:20:00 +0000

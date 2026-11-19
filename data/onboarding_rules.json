@@ -1,0 +1,22 @@
+[
+  {
+    "window_keyword": "Terminal",
+    "tip_text": "Tip: In Ubuntu, paste inside the Terminal using Ctrl+Shift+V instead of Ctrl+V. Press Ctrl+Space to search curated commands."
+  },
+  {
+    "window_keyword": "Files",
+    "tip_text": "Looking for the C: drive? In Linux, your personal files live inside 'Home' (/home/username)."
+  },
+  {
+    "window_keyword": "Settings",
+    "tip_text": "Tip: Ubuntu Settings manages Displays, Wi-Fi, Sound, Dark Mode, and Ubuntu Pro subscriptions."
+  },
+  {
+    "window_keyword": "Text Editor|gedit",
+    "tip_text": "Tip: Use Ctrl+S to save files. For system configuration files requiring root privileges, use 'sudo nano' in the Terminal."
+  },
+  {
+    "window_keyword": "Software|App Center",
+    "tip_text": "Tip: The Ubuntu App Center allows you to install and update verified software packages safely."
+  }
+]

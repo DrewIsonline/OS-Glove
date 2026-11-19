@@ -1,0 +1,265 @@
+{
+  "schema_version": "1.2",
+  "title": "Drew Is OpenS Ubuntu LITE and Ubuntu Glove Alpha Voice-Guided Setup",
+  "purpose": "Replace Windows with Ubuntu Desktop 26.04 LTS, prepare a local OpenS LITE host, and install Ubuntu Glove 0.2.0-alpha from the verified rebuilt source bundle as a controlled per-user alpha pilot. The application is not a complete OpenS LITE release and does not provide microphone voice commands.",
+  "reader_protocol": {
+    "mode": "one_card_then_wait",
+    "never_auto_advance": true,
+    "password_handling": "Never ask the user to say, spell, or expose a password, encryption passphrase, recovery key, API key, or Wi-Fi password. Say 'enter it privately'.",
+    "commands": {
+      "start|play": "Read the current card, then wait.",
+      "next": "Advance one card, read it, then wait.",
+      "repeat": "Read the current card again, then wait.",
+      "pause": "Say 'Paused at card [id].' Do not continue.",
+      "resume": "Repeat the current card, then wait.",
+      "back": "Move to the preceding card, read it, then wait.",
+      "status": "State current card title and its completion condition only.",
+      "help": "Explain the current card or screen only. Do not proceed.",
+      "stop": "Say 'Stopped at card [id]: [title].' End the reading session.",
+      "i see": "Listen to the exact screen text, resolve that screen, then remain on the same card."
+    },
+    "hard_stops": [
+      {
+        "card": "09",
+        "rule": "Before any destructive installation begins, ask exactly: Do you confirm that this is the correct drive and you want to permanently erase Windows? Continue only after the user says: Yes, erase this drive."
+      },
+      {
+        "card": "25",
+        "rule": "Do not configure an external or local model endpoint, and do not use Read screen, during the first Ubuntu Glove alpha pilot."
+      },
+      {
+        "card": "26",
+        "rule": "Do not claim that Ubuntu Glove supports microphone commands, speech-to-text, text-to-speech, or Presence and Voice. Those features are absent from this archive."
+      }
+    ]
+  },
+  "assumptions": [
+    "One x86-64 PC will be converted from Windows to Ubuntu only.",
+    "This is a LITE/Glove workstation, not the finished OpenS FULL multi-user server.",
+    "An 8 GB or larger empty USB drive, a separate backup drive, and the Ubuntu Glove source archive are available.",
+    "The target drive may be erased only after the Card 09 confirmation.",
+    "Ubuntu Glove is installed only from a terminal within a logged-in Ubuntu GNOME graphical session, never from SSH."
+  ],
+  "cards": [
+    {
+      "id": "01",
+      "title": "Turn on and confirm readiness",
+      "say": "Turn on the computer while it still runs Windows. We are not erasing anything yet. Confirm that you have a backup drive, an eight-gigabyte or larger empty USB stick, the Ubuntu Glove source ZIP, and another device with the guide. Say ready when those are present.",
+      "wait_for": "User confirms readiness."
+    },
+    {
+      "id": "02",
+      "title": "Back up Windows and source archives",
+      "say": "Copy every file you care about to the external backup drive. Include Desktop, Documents, Downloads, browser bookmarks, password-manager recovery information, SSH keys, installers, the OpenS Software Build Folder ZIP, and ubuntu-glove-rebuilt-0.2.0-alpha.zip and its matching sha256 file. Open a few copied files, then eject and unplug the backup drive.",
+      "wait_for": "User confirms the backup is verified and unplugged."
+    },
+    {
+      "id": "03",
+      "title": "Download Ubuntu",
+      "say": "In Windows, open ubuntu dot com slash download slash desktop. Download Ubuntu Desktop 26.04 LTS for an Intel or AMD computer. Save the ISO file in Downloads. Do not download Ubuntu Server for this Glove workstation.",
+      "wait_for": "Ubuntu ISO download is complete."
+    },
+    {
+      "id": "04",
+      "title": "Create boot USB",
+      "say": "Download Rufus from rufus dot ie. Insert the empty USB. In Rufus, confirm Device is the USB, click Select, choose the Ubuntu ISO, and click Start. If Rufus asks, use ISO Image mode. When it says Ready, close Rufus. The USB stays plugged in.",
+      "wait_for": "Rufus reports READY."
+    },
+    {
+      "id": "05",
+      "title": "Prepare target machine",
+      "say": "Shut down Windows completely. Unplug the backup drive and all non-target storage drives. Leave only monitor, keyboard, mouse, power, network if used, and the Ubuntu USB. If you cannot identify the target drive with certainty, stop and do not guess.",
+      "wait_for": "Only the target drive is connected."
+    },
+    {
+      "id": "06",
+      "title": "Boot the USB",
+      "say": "Turn on the computer and tap the boot-menu key. F12 is most common. Escape, F2, F10, and F11 are also common. Select the UEFI entry for the Ubuntu USB. Do not select Windows Boot Manager.",
+      "wait_for": "Ubuntu welcome or installer screen appears."
+    },
+    {
+      "id": "07",
+      "title": "Try Ubuntu",
+      "say": "Choose Try Ubuntu first. On the temporary desktop, test the screen, keyboard, mouse, network, camera, microphone, and speakers. If the basics fail, stop before erasing Windows. If they work, double-click Install Ubuntu.",
+      "wait_for": "Basic hardware works and installer is open."
+    },
+    {
+      "id": "08",
+      "title": "Choose installer options",
+      "say": "Choose English, your keyboard, and network. Choose Install Ubuntu, Interactive installation, Default selection, and both third-party software options. Continue to Disk setup.",
+      "wait_for": "Disk setup screen is visible."
+    },
+    {
+      "id": "09",
+      "title": "Erase Windows",
+      "say": "Select Erase disk and install Ubuntu. Verify the drive size and manufacturer match the one drive you deliberately left connected. This is irreversible. Do you confirm that this is the correct drive and you want to permanently erase Windows?",
+      "required_confirmation": "Yes, erase this drive.",
+      "wait_for": "Explicit destructive confirmation."
+    },
+    {
+      "id": "10",
+      "title": "Encrypt and create account",
+      "say": "Choose Encrypt with a passphrase. Enter and write down a strong passphrase privately. Use computer name opens-lite-01. Use a simple lowercase username. Require a login password. Select Portland or America Los Angeles. Review the summary and click Install.",
+      "wait_for": "Ubuntu files are copying."
+    },
+    {
+      "id": "11",
+      "title": "Restart into Ubuntu",
+      "say": "Wait for completion. Click Restart Now. Remove the USB only when asked and press Enter. Enter the disk passphrase privately, then log in with your Ubuntu password.",
+      "wait_for": "Ubuntu desktop is visible and USB is removed."
+    },
+    {
+      "id": "12",
+      "title": "Complete first-run screens",
+      "say": "Complete Ubuntu's first-run screens. Leave device-information sharing off unless you specifically want it. Do not install random apps. Stop at the normal Ubuntu desktop.",
+      "wait_for": "Normal desktop is visible."
+    },
+    {
+      "id": "13",
+      "title": "Update Ubuntu",
+      "say": "Open Terminal with Control Alt T. Run sudo apt update. Wait. Run sudo apt full-upgrade dash y. Wait. Then run sudo reboot. Enter the password privately when asked.",
+      "commands": [
+        "sudo apt update",
+        "sudo apt full-upgrade -y",
+        "sudo reboot"
+      ],
+      "wait_for": "Machine has rebooted and user has logged in."
+    },
+    {
+      "id": "14",
+      "title": "Verify NVIDIA if installed",
+      "say": "Open Terminal and run nvidia-smi. If a GPU table appears, the driver works. If not, use Additional Drivers and choose the NVIDIA driver marked recommended. Apply, reboot, and test nvidia-smi again. Do not use random driver installers.",
+      "commands": [
+        "nvidia-smi"
+      ],
+      "wait_for": "NVIDIA GPU table appears, or user confirms no NVIDIA GPU is present."
+    },
+    {
+      "id": "15",
+      "title": "Install base host tools",
+      "say": "Open Terminal. Install the basic host tools with the command I will now read. Then run podman info. This does not install the AI stack or any model.",
+      "commands": [
+        "sudo apt install -y git curl ca-certificates build-essential cmake pkg-config python3-venv python3-pip pipx ffmpeg sqlite3 unzip podman",
+        "podman info"
+      ],
+      "wait_for": "Both commands finish without a fatal error."
+    },
+    {
+      "id": "16",
+      "title": "Create private OpenS folders",
+      "say": "Create private folders for future installers, models, data, backups, and logs. These do not install OpenS. They only organize the host.",
+      "commands": [
+        "mkdir -p \"$HOME/OpenS/installers\" \"$HOME/OpenS/models\" \"$HOME/OpenS/data\" \"$HOME/OpenS/backups\" \"$HOME/OpenS/logs\"",
+        "chmod 700 \"$HOME/OpenS\" \"$HOME/OpenS/installers\" \"$HOME/OpenS/models\" \"$HOME/OpenS/data\" \"$HOME/OpenS/backups\" \"$HOME/OpenS/logs\"",
+        "ls -ld \"$HOME/OpenS\" \"$HOME/OpenS\"/*"
+      ],
+      "wait_for": "All six folders show permissions beginning drwx------."
+    },
+    {
+      "id": "17",
+      "title": "Enable firewall",
+      "say": "While physically at the computer, install UFW, deny incoming connections, allow outgoing connections, enable the firewall, and check status. Do not do this over remote SSH.",
+      "commands": [
+        "sudo apt install -y ufw",
+        "sudo ufw default deny incoming",
+        "sudo ufw default allow outgoing",
+        "sudo ufw enable",
+        "sudo ufw status verbose"
+      ],
+      "wait_for": "Status is active with incoming denied and outgoing allowed."
+    },
+    {
+      "id": "18",
+      "title": "Make first backup",
+      "say": "Connect a backup drive. Open the Backups app. Select the external drive, enable encryption, run a backup, then browse it through Restore. Do not restore; prove it is readable.",
+      "wait_for": "Encrypted backup is browsable and backup drive is unplugged."
+    },
+    {
+      "id": "19",
+      "title": "Copy and verify rebuilt Ubuntu Glove source",
+      "say": "Reconnect the backup drive. In Files, copy ubuntu-glove-rebuilt-0.2.0-alpha.zip and ubuntu-glove-rebuilt-0.2.0-alpha.sha256 to Home, OpenS, installers. Eject the backup drive. Run the checksum command first. It must say OK before you unzip the rebuilt source.",
+      "commands": [
+        "cd \"$HOME/OpenS/installers\"",
+        "sha256sum -c ubuntu-glove-rebuilt-0.2.0-alpha.sha256",
+        "unzip -q ubuntu-glove-rebuilt-0.2.0-alpha.zip",
+        "cd ubuntu-glove-rebuilt && chmod +x scripts/install_stack.sh scripts/ubuntu-glove scripts/build_deb.sh scripts/create_source_bundle.sh debian/rules"
+      ],
+      "wait_for": "Checksum reports OK and project folder exists at Home/OpenS/installers/ubuntu-glove-rebuilt."
+    },
+    {
+      "id": "20",
+      "title": "Install Ubuntu Glove dependencies",
+      "say": "Install the GTK, accessibility, layer-shell, indicator, and screenshot Ubuntu packages. Then validate the supplied local JSON data.",
+      "commands": [
+        "cd \"$HOME/OpenS/installers/ubuntu-glove-rebuilt\"",
+        "sudo apt update",
+        "sudo apt install -y python3 python3-gi python3-gi-cairo python3-pyatspi at-spi2-core gir1.2-gtk-4.0 gir1.2-adw-1 gir1.2-ayatanaappindicator3-0.1 gir1.2-gtk4layershell-1.0 gnome-screenshot",
+        "python3 main.py --check-data"
+      ],
+      "wait_for": "JSON output reports 2 commands, 2 onboarding rules, and 0 model routes."
+    },
+    {
+      "id": "21",
+      "title": "Smoke-test without tray",
+      "say": "Run Ubuntu Glove without the tray service. A small blue U should appear near the upper-left desktop. Test Commands and Save note only. Do not test Read screen. Close the app with Control C in Terminal.",
+      "commands": [
+        "cd \"$HOME/OpenS/installers/ubuntu-glove-rebuilt\"",
+        "python3 main.py --no-tray"
+      ],
+      "wait_for": "Avatar, command palette, and local note save work."
+    },
+    {
+      "id": "22",
+      "title": "Enable accessibility support",
+      "say": "Check GNOME accessibility support. If it reports false, enable it for the logged-in desktop user only. Do not use sudo.",
+      "commands": [
+        "gsettings get org.gnome.desktop.interface toolkit-accessibility",
+        "gsettings set org.gnome.desktop.interface toolkit-accessibility true",
+        "systemctl --user restart at-spi-dbus-bus.service 2>/dev/null || true"
+      ],
+      "condition": "Run the last two commands only if the first command prints false.",
+      "wait_for": "Accessibility is enabled, or user has logged out and back in once."
+    },
+    {
+      "id": "23",
+      "title": "Install Ubuntu Glove for this user",
+      "say": "Install Ubuntu Glove only for the logged-in desktop user. The installer preserves notes and settings during future updates. There is no system-wide mode. Do not run this through SSH. Then inspect the user service status.",
+      "commands": [
+        "cd \"$HOME/OpenS/installers/ubuntu-glove-rebuilt\"",
+        "bash scripts/install_stack.sh --enable",
+        "systemctl --user status ubuntu-glove.service --no-pager"
+      ],
+      "wait_for": "Overlay starts or manual graphical-session launch works."
+    },
+    {
+      "id": "24",
+      "title": "Optional Bash command staging",
+      "say": "Optional: add the Bash hook once. It opens the command palette with Control Space and stages a selected command in the current prompt. It does not run it automatically.",
+      "commands": [
+        "if ! grep -qxF 'source \"$HOME/.local/share/ubuntu-glove/app/scripts/bashrc_hook.sh\"' \"$HOME/.bashrc\"; then",
+        "  printf '\\nsource \"$HOME/.local/share/ubuntu-glove/app/scripts/bashrc_hook.sh\"\\n' >> \"$HOME/.bashrc\"",
+        "fi",
+        "source \"$HOME/.bashrc\""
+      ],
+      "wait_for": "Palette opens in a fresh Bash terminal, or user declines this optional feature."
+    },
+    {
+      "id": "25",
+      "title": "Keep LLM and screen reading off",
+      "say": "The rebuilt app works locally without a model. Its model lock is intentionally empty because no validated local model artifact was supplied. Do not create settings dot json, configure an endpoint, or use Read screen during this first alpha pilot.",
+      "wait_for": "Local Ubuntu Glove features work with no model route or screen reading enabled."
+    },
+    {
+      "id": "26",
+      "title": "Voice and Presence are absent",
+      "say": "Ubuntu Glove does not add microphone commands, speech-to-text, text-to-speech, wake words, or the OpenS Presence and Voice module. Do not install those parts separately from random instructions. They require a future signed and tested OpenS LITE release.",
+      "wait_for": "User acknowledges that voice interaction is not installed."
+    },
+    {
+      "id": "27",
+      "title": "Alpha-pilot confirmation",
+      "say": "Confirm Ubuntu boots without USB; passwords are stored safely; updates are complete; NVIDIA works if present; devices work; Podman works; private OpenS folders exist; firewall and backup are complete; the rebuilt Ubuntu Glove archive checksum reported OK; Ubuntu Glove data validation, overlay, command palette, and note save passed; and no model, screen reading, voice modules, random models, or full stack were installed. If true, say: Ubuntu LITE host and Ubuntu Glove alpha pilot complete.",
+      "wait_for": "User confirms all applicable conditions."
+    }
+  ]
+}
