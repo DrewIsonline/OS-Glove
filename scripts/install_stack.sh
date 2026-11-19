@@ -54,9 +54,25 @@ require_graphical_session() {
 }
 
 install_dependencies() {
-  local packages=(python3 python3-gi python3-gi-cairo python3-pyatspi at-spi2-core gir1.2-gtk-4.0 gir1.2-adw-1 gir1.2-ayatanaappindicator3-0.1 gir1.2-gtk4layershell-1.0 gnome-screenshot)
+  local core_packages=(
+    python3
+    python3-gi
+    python3-gi-cairo
+    python3-pyatspi
+    at-spi2-core
+    gir1.2-gtk-4.0
+    gir1.2-adw-1
+    gir1.2-ayatanaappindicator3-0.1
+    gnome-screenshot
+  )
   sudo apt-get update
-  sudo apt-get install -y "${packages[@]}"
+  sudo apt-get install -y "${core_packages[@]}"
+
+  # Optional: GTK4 Layer Shell is available in newer Ubuntu releases (24.10+) or Debian.
+  # The app automatically falls back to standard undecorated GTK4 windows if absent.
+  if apt-cache show gir1.2-gtk4layershell-1.0 >/dev/null 2>&1; then
+    sudo apt-get install -y gir1.2-gtk4layershell-1.0 || true
+  fi
 }
 
 validate_source() {
